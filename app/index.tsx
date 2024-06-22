@@ -1,60 +1,95 @@
 import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet, ImageBackground, TextInput, Button, Pressable} from 'react-native';
+import { JumpingTransition } from 'react-native-reanimated';
+
+const image = {uri:'https://img.freepik.com/premium-photo/purple-wallpaper-iphone-is-best-high-definition-iphone-wallpaper-you-can-make-this-wallpaper-your-iphone-x-backgrounds-mobile-screensaver-ipad-lock-screen-wallpaper-mobile_899894-1815.jpg'};
 
 const index = () => {
+  const [number, onChangeNumber] = React.useState('');
+
+
   return (
-    <View style={styles.container}>
-      {/* text styles */}
-      <View> 
-        <Text style={styles.bigBlue}> I am big blue text </Text>
-        <Text style={styles.red}> I am red text muhahah</Text>
-        <Text style={styles.bigYellow}> I am big yellow bird </Text>
+    <View style={styles.bodyContainer}>
+    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+      <View style={styles.container}> 
+        <Text style={styles.signUp}> Sign Up! </Text>
+        <Text style={styles.phonePrompt}> Enter your phone number </Text>
+        <View style={{alignItems:'center', flex:1,}}> 
+          <TextInput
+          style={styles.phoneContainer}
+          placeholder='+1 (000) (000)-(0000)'>
+          </TextInput>
+          <Pressable style={styles.enterButton}> 
+            <Text style={styles.enterText}> Enter </Text> 
+          </Pressable>
+          <Text style={styles.alternativeText}> OR ENTER WITH </Text>
+        </View>
+        
       </View>
 
-      {/* height and width with container */}
-      <View style={styles.box1}/>
-      <View style={styles.box2}/>
-      <View style={styles.box3}/>
+    </ImageBackground>
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  bodyContainer: {
+    flex:3,
+    backgroundColor: 'red',
+  },
+  image: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
   container: {
-    marginTop: 10,
-    paddingTop: 10,
-    flex:1,
-  },
-  bigBlue: {
-    color: 'blue',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  red: {
-    color: 'red',
-  },
-  bigYellow: {
-    color: 'orange',
-    fontSize: 50,
-    fontWeight: 'bold'
-  },
-  box1: {
-    flex: 1,
-    backgroundColor: 'powderblue',
-    width: '25%',
-    height: 50,
-  },
-  box2: {
-    flex: 1,
-    backgroundColor: 'skyblue',
-    width: '50%',
-    height: 100,
-  },
-  box3: {
-    flex: 1,
-    backgroundColor: 'steelblue',
-    height: 200,
     width: '100%',
+    backgroundColor: 'white',
+    height: '50%',
+    borderRadius: 40,
+  },
+  signUp: {
+    textAlign: 'center',
+    padding: 20,
+    fontSize: 40,
+    fontFamily: 'Freemono',  },
+  phonePrompt: {
+    color: 'gray',
+    textAlign: 'center',
+    padding: 10,
+  },
+  phoneContainer: {
+    borderWidth: 1,
+    width: '90%',
+    textAlign: 'center',
+    paddingTop: 20,
+    paddingBottom: 20,
+    margin: 10,
+    borderRadius: 10,
+    backgroundColor: 'rgb(250, 250, 250)',
+    marginBottom: 20,
+
+  },
+  enterButton: {
+    borderWidth: 1,
+    borderColor: '#17121a',
+    borderRadius: 10,
+    width: '90%',
+    backgroundColor: '#c58ae3',
+    textAlign: 'center',
+    padding: 20,
+    shadowColor: '#17121a',
+    shadowOffset: {width: 6, height: 6},
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+  },
+  enterText: {
+    textAlign: 'center',
+    color: '#17121a',
+  },
+  alternativeText: {
+    marginTop: 40,
+    color: 'gray',
   },
 
 });
